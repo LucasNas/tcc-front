@@ -1,0 +1,38 @@
+<div class="card-content">
+    <button (click) = "newHost()" pButton pRipple type="button" label="Cadastrar Novo Host" class="p-button-rounded p-button-success"></button>
+</div>
+
+<div class="card-divider"></div>
+
+<div class="card-content">
+    <p-table [value]="hosts">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>IP</th>
+                <th>Porta</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-host>
+            <tr>
+                <td>{{host.host_nome}}</td>
+                <td>{{host.host_ip}}</td>
+                <td>{{host.host_porta}}</td>
+                <td >
+                    <span *ngIf="host.host_status === true" class="situacao-ativo">Ativo</span>
+                    <span *ngIf="host.host_status === false" class="situacao-inativo">Inativo</span>
+                </td>
+                <td>
+                    <span (click)="openChart(host)" class="pi pi-chart-line chart-icon"></span>
+                    <span (click)="edit(host)" class="pi pi-file edit-icon"></span>
+                    <span (click)="delete(host)" class="pi pi-times-circle delete-icon"></span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '25vw'}">
+    </p-confirmDialog>
+</div>
+

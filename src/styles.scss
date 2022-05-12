@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.card-content{
+    padding: 1.2rem;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px 0 #bbbbbb;
+}
+
+.card-divider{
+    display: flex;
+    width: 100%;
+    margin: 1rem 0;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    border-top-style: solid;
+    border-top-color: #e3e3e3;
+}
