@@ -30,7 +30,7 @@ export class ItensTabComponent implements OnInit {
 
   newItem(): void{
     this.dialogService.open(ItemDetailComponent,{
-      header: "Novo Template",
+      header: "Novo Item",
       width: '75%'
     });
     

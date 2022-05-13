@@ -39,7 +39,7 @@ export class TemplatesTabComponent implements OnInit {
   newTemplate(): void{
     this.dialogService.open(TemplateDetailComponent,{
       header: "Novo Template",
-      width: '75%',
+      width: '55%',
       data: {itens:this.itens}
     });
     
@@ -48,7 +48,7 @@ export class TemplatesTabComponent implements OnInit {
   edit(template: Template): void{
     this.dialogService.open(TemplateDetailComponent,{
       header: "Editar " + template.template_nome,
-      width: '75%',
+      width: '55%',
       data: {template:template,itens:this.itens}
     });
   }

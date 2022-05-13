@@ -1,34 +1,34 @@
 <div class="card-content">
     <div class="formgrid grid">
-        <div class="field col-12 md:col-4">
+        <div class="field col-12 sm:col-4 md:col-4">
             <label for="name">Nome</label>
             <input [(ngModel)]="item.item_nome" id="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
-        <div class="field col-12 md:col-4">
+        <div class="field col-12 sm:col-4 md:col-4">
             <label for="oid">OID</label>
             <input [(ngModel)]="item.item_oid" id="oid" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
-        <div class="field col-12 md:col-4">
+        <div class="field col-12  sm:col-4 md:col-4">
             <label for="unFreq">Formato OID</label>
             <select id="unFreq" [(ngModel)]="selectedUnOID" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
                 <option *ngFor="let unOID of unOID" [ngValue]="unOID.id">{{unOID.name}}</option>
             </select>        
         </div>
-        <div class="field col-12 md:col-3">
+        <div class="field col-12 sm:col-3 md:col-3">
             <label for="freq">Frequência</label>
-            <p-inputNumber [step]="1"  [(ngModel)]="item.item_intervaloAtualizacao" id="freq" ></p-inputNumber>
+            <p-inputNumber [step]="1"  [(ngModel)]="item.item_intervaloAtualizacao" inputId="freq" ></p-inputNumber>
         </div>
-        <div class="field col-12 md:col-3">
+        <div class="field col-12  sm:col-3 md:col-3">
             <label for="unFreq">Unidade da frequência</label>
             <select id="unFreq" [(ngModel)]="selectedUnFreq" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
             <option *ngFor="let unFreq of unFreq" [ngValue]="unFreq.name">{{unFreq.nome}}</option>
             </select>        
         </div>
-        <div class="field col-12 md:col-3">
+        <div class="field col-12 sm:col-3 md:col-3">
             <label for="tempo">Tempo de armazenamento</label>
-            <p-inputNumber [step]="1"  [(ngModel)]="item.item_tempoArmazenamentoDados" id="tempo" ></p-inputNumber>
+            <p-inputNumber [step]="1"  [(ngModel)]="item.item_tempoArmazenamentoDados" inputId="tempo" ></p-inputNumber>
         </div>
-        <div class="field col-12 md:col-3">
+        <div class="field col-12 sm:col-3 md:col-3">
             <label for="unTempo">Unidade do tempo</label>
             <select id="unTempo" [(ngModel)]="selectedUnData" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
                 <option *ngFor="let unData of unData" [ngValue]="unData.name">{{unData.nome}}</option>
