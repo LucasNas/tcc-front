@@ -54,7 +54,7 @@ export class HostsTabComponent implements OnInit {
   newHost(): void{
     this.dialogService.open(HostDetailComponent,{
       header: "Novo Host",
-      width: '55%',
+      width: '75%',
       data: {template:this.templates}
     });
     
@@ -63,7 +63,7 @@ export class HostsTabComponent implements OnInit {
   openChart(host:Host): void{
     this.dialogService.open(ChartDetailComponent,{
       header: "Dados de " + host.host_nome,
-      width: '55%',
+      width: '75%',
       data: {host:host,charts:this.charts}
     });
   }
@@ -71,7 +71,7 @@ export class HostsTabComponent implements OnInit {
   edit(host:Host): void{
    this.dialogService.open(HostDetailComponent,{
      header: "Editar " + host.host_nome,
-     width: '55%',
+     width: '75%',
      data: {host:host,template:this.templates}
    });
   }

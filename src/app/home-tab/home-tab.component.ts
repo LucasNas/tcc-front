@@ -65,7 +65,7 @@ export class HomeTabComponent implements OnInit {
   newHost(): void{
     this.dialogService.open(HostDetailComponent,{
       header: "Novo Host",
-      width: '55%',
+      width: '75%',
       data: {template:this.templates}
     });
     
@@ -74,7 +74,7 @@ export class HomeTabComponent implements OnInit {
   newTemplate(): void{
     this.dialogService.open(TemplateDetailComponent,{
       header: "Novo Template",
-      width: '55%',
+      width: '75%',
       data: {itens:this.itens}
     });
   }
@@ -83,7 +83,7 @@ export class HomeTabComponent implements OnInit {
   newItem(): void{
     this.dialogService.open(ItemDetailComponent,{
       header: "Novo Item",
-      width: '55%'
+      width: '75%'
     }); 
   }
 }
