@@ -12,8 +12,6 @@ export class ChartService {
   constructor(private http: HttpClient) { }
 
   getAllData(): Observable<any[]>{
-    console.log("getAllData")
     return this.http.get<any[]>(this.url);
-  
   }
 }

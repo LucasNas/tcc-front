@@ -1,1 +1,34 @@
-<p>itens-tab works!</p>
+<div class="card-content">
+    <button (click) = "newItem()" pButton pRipple type="button" label="Cadastrar Novo Item" class="p-button-rounded p-button-success"></button>
+</div>
+
+<div class="card-divider"></div>
+
+<div class="card-content">
+    <p-table [value]="itens">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>OID</th>
+                <th>Atualização</th>
+                <th>Armazenamento</th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>{{item.item_nome}}</td>
+                <td>{{item.item_oid}}</td>
+                <td>{{updateTxt(item)}}</td>
+                <td>{{storageTxt(item)}}</td>
+                <td>
+                    <span (click)="editItem(item)" class="pi pi-file edit-icon"></span>
+                    <span (click)="deleteItem(item)" class="pi pi-times-circle delete-icon"></span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '25vw'}">
+    </p-confirmDialog>
+</div>
+

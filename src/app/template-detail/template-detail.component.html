@@ -1,0 +1,26 @@
+<div class="card-content">
+    <div class="formgrid grid">
+        <div class="field col-12 md:col-4">
+            <label for="name">Nome</label>
+            <input [(ngModel)]="template.template_nome" id="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field col-12 md:col-8">
+            <label for="itens">Itens</label>
+            <p-listbox id="itens"
+            [options]="itemTemplate"
+            [multiple]="true"
+            [(ngModel)]="selectedItens"
+            optionLabel="name"
+            
+            [listStyle]="{'max-height':'85px'}"
+          ></p-listbox>        
+        </div>
+        <div class="field col-12">
+            <label for="obs">Observações</label>
+            <textarea [(ngModel)]="template.template_observacoes" id="obs" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+        </div>
+
+        <div class="field col-12">
+        <button   pButton pRipple type="button" label="Salvar" class="p-button-rounded p-button-success salvar-button"></button>
+        </div>
+    </div>

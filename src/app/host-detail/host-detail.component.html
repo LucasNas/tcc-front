@@ -10,7 +10,8 @@
         </div>
         <div class="field col-12 md:col-3">
             <label for="porta">Porta</label>
-            <input [(ngModel)]="host.host_porta" id="porta" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            <p-inputNumber [step]="1"  [(ngModel)]="host.host_porta" id="porta" ></p-inputNumber>
+
         </div>
         <div class="field col-12 md:col-3">
             <label for="community">Community</label>
@@ -30,7 +31,7 @@
             <label for="ativo">Status</label>
             <select id="ativo" [(ngModel)]="selectedAtivo" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
                 <option *ngFor="let ativo of ativo" [ngValue]="ativo.ativo">{{ativo.name}}</option>
-              </select>
+            </select>
         </div>
         <div class="field col-12 md:col-7">
             <label for="obs">Observações</label>
@@ -41,5 +42,3 @@
         <button (click) = "saveHost()"  pButton pRipple type="button" label="Salvar" class="p-button-rounded p-button-success salvar-button"></button>
         </div>
     </div>
-</div>
-

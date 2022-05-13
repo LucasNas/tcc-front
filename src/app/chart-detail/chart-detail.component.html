@@ -1,1 +1,24 @@
-<p-chart type="line" [data]="data" [options]="options"></p-chart>
+<!--
+    <div *ngFor="let chart of charts">
+    
+</div>
+--> 
+
+<p-accordion *ngFor="let data of datas"  [multiple]="true">
+    <p-accordionTab header="{{data.header}}"  *ngIf="data.tipo === 'NI' || data.tipo === 'ND'" [selected]="true">
+        <p-chart type="line" [data]="data"></p-chart>
+    </p-accordionTab>
+    <div *ngIf="data.tipo === 'CH'">
+        <p-accordionTab  header="{{data.header}}"   [selected]="true">
+            <div class="text-red-500 text-center field col-12" *ngIf="data.error === true">
+                 {{data.datasets}}
+            </div>
+            <div class="text-green-500 text-center field col-12" *ngIf="data.error === false">
+                {{data.datasets}}
+           </div>
+            <div class="text-right field col-12">Última atualização: {{data.labels}}</div>     
+        </p-accordionTab>  
+    </div>
+    
+</p-accordion>
+

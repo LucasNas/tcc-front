@@ -23,6 +23,11 @@ import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import {ChartModule} from 'primeng/chart';
 import { ChartDetailComponent } from './chart-detail/chart-detail.component';
+import {AccordionModule} from 'primeng/accordion';
+import { CalendarModule } from 'primeng/calendar';
+import { TemplateDetailComponent } from './template-detail/template-detail.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -33,7 +38,9 @@ import { ChartDetailComponent } from './chart-detail/chart-detail.component';
     TemplatesTabComponent,
     ItensTabComponent,
     HostDetailComponent,
-    ChartDetailComponent
+    ChartDetailComponent,
+    TemplateDetailComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,10 @@ import { ChartDetailComponent } from './chart-detail/chart-detail.component';
     ListboxModule,
     FormsModule,
     DropdownModule,
-    ChartModule
+    ChartModule,
+    AccordionModule,
+    CalendarModule,
+    InputNumberModule
   ],
   providers: [ConfirmationService,DialogService],
   bootstrap: [AppComponent]

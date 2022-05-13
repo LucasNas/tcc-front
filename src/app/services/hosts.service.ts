@@ -19,12 +19,17 @@ export class HostsService {
 
   deleteHost(host: Host): Observable<any>{
     
-    return this.http.delete<any>(this.url+host.id);
+    return this.http.delete<any>(this.url + host.id + '/');
   }
 
   createHost(host: Host): Observable<any>{
     
     return this.http.post<any>(this.url, JSON.stringify(host));
+  }
+
+  editHost(host: Host): Observable<any>{
+    
+    return this.http.put<any>(this.url + host.id + '/', JSON.stringify(host));
   }
 
 }

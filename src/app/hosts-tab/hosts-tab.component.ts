@@ -32,14 +32,23 @@ export class HostsTabComponent implements OnInit {
   ngOnInit(): void {
     this.getHosts();
     this.getTemplates();
+    this.getCharts();
   }
 
   getHosts(): void{
-    this.hostService.getAllHosts().subscribe((request: any) => {this.hosts = request});
+    this.hostService.getAllHosts().subscribe((response: any) => {this.hosts = response});
   }
 
   getTemplates(): void{
-    this.templateService.getAllTemplates().subscribe((request: any) => {this.templates = request});
+    this.templateService.getAllTemplates().subscribe((response: any) => {this.templates = response});
+  }
+
+  getCharts(): void{
+    this.chartService.getAllData().subscribe(response => {
+      for(const k in response){
+        this.charts = response[k];
+      }
+    });
   }
   
   newHost(): void{
@@ -52,7 +61,6 @@ export class HostsTabComponent implements OnInit {
   }
 
   openChart(host:Host): void{
-    this.chartService.getAllData().subscribe(response => {this.charts = response});
     this.dialogService.open(ChartDetailComponent,{
       header: "Dados de " + host.host_nome,
       width: '55%',

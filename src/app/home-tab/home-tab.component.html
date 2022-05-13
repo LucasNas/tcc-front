@@ -1,1 +1,52 @@
-<p>home-tab works!</p>
+<div class="card-content">
+    <div class="flex justify-content-evenly flex-wrap card-container">
+        <div class="flex align-items-center justify-content-center">
+            <button (click) = "newHost()" pButton pRipple type="button" label="Cadastrar Novo Host" class="p-button-rounded p-button-success"></button>
+        </div>
+        <div class="flex align-items-center justify-content-center">
+            <button (click) = "newTemplate()" pButton pRipple type="button" label="Cadastrar Novo Template" class="p-button-rounded p-button-success"></button>
+        </div>
+        <div class="flex align-items-center justify-content-center">
+            <button (click) = "newItem()" pButton pRipple type="button" label="Cadastrar Novo Item" class="p-button-rounded p-button-success salvar-button"></button>
+        </div>
+    </div> 
+</div>
+
+<div class="card-divider"></div>
+
+<div class="card-content">
+    <div class="flex flex-column card-container">
+        <div class="flex align-items-center justify-content-center text-4xl">Hosts</div>
+        <div class="flex justify-content-evenly flex-wrap card-container">
+            <div class="flex flex-column card-container">
+                <div class="flex align-items-center justify-content-center text-2xl">Ativo(s)</div>
+                <div class="flex align-items-center justify-content-center w-15rem h-15rem bg-green-300 font-bold text-white border-round m-2 text-8xl">{{hostsAtivos}}</div>
+    
+            </div>
+            <div class="flex flex-column card-container">
+                <div class="flex align-items-center justify-content-center text-2xl">Inativo(s)</div>
+                <div class="flex align-items-center justify-content-center w-15rem h-15rem bg-red-300 font-bold text-white border-round m-2 text-8xl">{{hostsInativos}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-divider"></div>
+
+<div class="card-content">
+    <div class="flex justify-content-evenly flex-wrap card-container">
+        <div class="flex flex-column card-container">
+            <div class="flex align-items-center justify-content-center text-2xl">Total de Templates</div>
+            <div class="flex align-items-center justify-content-center w-15rem h-15rem bg-green-300 font-bold text-white border-round m-2 text-8xl">{{templates.length}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="card-content">
+    <div class="flex justify-content-evenly flex-wrap card-container">
+        <div class="flex flex-column card-container">
+            <div class="flex align-items-center justify-content-center text-3xl">Total de Itens</div>
+            <div class="flex align-items-center justify-content-center w-15rem h-15rem bg-green-300 font-bold text-white border-round m-2 text-8xl">{{itens.length}}</div>
+        </div>
+    </div>
+</div>

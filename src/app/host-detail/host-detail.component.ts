@@ -21,12 +21,13 @@ export class HostDetailComponent implements OnInit {
 
   ativo : Ativo[];
 
-  host : Host = new Host();
+  host = new Host();
 
-  selectedAtivo: boolean
+  selectedAtivo: boolean;
+
+  isNew = true;
 
   constructor(private hostService: HostsService,
-    private templateService: TemplateService,
     private ref: DynamicDialogRef,
     private config: DynamicDialogConfig) {
       this.ativo = [
@@ -45,16 +46,15 @@ export class HostDetailComponent implements OnInit {
       if(this.config.data.host){
         this.host = this.config.data.host;
         this.selectedAtivo = this.config.data.host.host_status;
+        this.isNew = false
         for (let i = 0; i < config.data.host.host_template.length; i++) {
-          for (let j = 0; i <this.templatesHost.length; i++){
+          for (let j = 0; j <this.templatesHost.length; j++){
               if(this.templatesHost[i].id === config.data.host.host_template[j]){
-                
                 this.selectedTemplates.push(this.templatesHost[i]);
               }
           }
         }
-        
-    }
+      }
     }
   }
 
@@ -64,7 +64,11 @@ export class HostDetailComponent implements OnInit {
 
   saveHost(): void {
     this.host.host_status = this.selectedAtivo;
-    console.log(this.host)
+    if(this.isNew){
+      this.hostService.createHost(this.host)
+    }else{
+      this.hostService.editHost(this.host)
+    }
     this.ref.close();
   }
 
