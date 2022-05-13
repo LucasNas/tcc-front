@@ -49,7 +49,7 @@ export class TemplateDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveTempalte(): void {
+  saveTemplate(): void {
     if(this.isNew){
       this.templateService.createTemplate(this.template)
     }else{
