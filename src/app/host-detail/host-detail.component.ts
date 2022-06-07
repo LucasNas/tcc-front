@@ -42,6 +42,7 @@ export class HostDetailComponent implements OnInit {
             auxTemplateHost.push(templateHost);
           }
           this.templatesHost = auxTemplateHost;
+          this.host.host_observacoes="";
       }
       if(this.config.data.host){
         this.host = this.config.data.host;
@@ -64,12 +65,14 @@ export class HostDetailComponent implements OnInit {
 
   saveHost(): void {
     this.host.host_status = this.selectedAtivo;
+    this.host.host_template = this.selectedTemplates;
+    console.log(this.host.host_observacoes);
     if(this.isNew){
-      this.hostService.createHost(this.host)
+      this.hostService.createHost(this.host).subscribe(() => this.ref.close());
     }else{
-      this.hostService.editHost(this.host)
+      this.hostService.editHost(this.host).subscribe(() => this.ref.close());
     }
-    this.ref.close();
+    
   }
 
 }

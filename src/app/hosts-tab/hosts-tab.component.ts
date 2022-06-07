@@ -52,12 +52,12 @@ export class HostsTabComponent implements OnInit {
   }
   
   newHost(): void{
-    this.dialogService.open(HostDetailComponent,{
+    const ref= this.dialogService.open(HostDetailComponent,{
       header: "Novo Host",
       width: '55%',
       data: {template:this.templates}
     });
-    
+    ref.onClose.subscribe(() => this.getHosts());
   }
 
   openChart(host:Host): void{
@@ -69,11 +69,12 @@ export class HostsTabComponent implements OnInit {
   }
 
   edit(host:Host): void{
-   this.dialogService.open(HostDetailComponent,{
+   const ref =this.dialogService.open(HostDetailComponent,{
      header: "Editar " + host.host_nome,
      width: '55%',
      data: {host:host,template:this.templates}
    });
+   ref.onClose.subscribe(() => this.getHosts());
   }
 
   delete(host:Host): void{
@@ -84,7 +85,7 @@ export class HostsTabComponent implements OnInit {
       acceptLabel:'Sim',
       rejectLabel:'Não',
       accept: ()=>{
-        this.hostService.deleteHost(host).subscribe(any => this.getHosts());  
+        this.hostService.deleteHost(host).subscribe(() => this.getHosts());  
       }
     });
     

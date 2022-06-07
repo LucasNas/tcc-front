@@ -37,20 +37,21 @@ export class TemplatesTabComponent implements OnInit {
   }
 
   newTemplate(): void{
-    this.dialogService.open(TemplateDetailComponent,{
+    const ref = this.dialogService.open(TemplateDetailComponent,{
       header: "Novo Template",
       width: '55%',
       data: {itens:this.itens}
     });
-    
+    ref.onClose.subscribe(() => this.getTemplates());
   }
 
   edit(template: Template): void{
-    this.dialogService.open(TemplateDetailComponent,{
+    const ref = this.dialogService.open(TemplateDetailComponent,{
       header: "Editar " + template.template_nome,
       width: '55%',
       data: {template:template,itens:this.itens}
     });
+    ref.onClose.subscribe(() => this.getTemplates());
   }
  
    delete(template:Template): void{

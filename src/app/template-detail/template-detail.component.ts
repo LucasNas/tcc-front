@@ -51,11 +51,10 @@ export class TemplateDetailComponent implements OnInit {
 
   saveTemplate(): void {
     if(this.isNew){
-      this.templateService.createTemplate(this.template)
+      this.templateService.createTemplate(this.template).subscribe(() => this.ref.close());
     }else{
-      this.templateService.editTemplate(this.template)
+      this.templateService.editTemplate(this.template).subscribe(() => this.ref.close());
     }
-    this.ref.close();
   }
 
 }

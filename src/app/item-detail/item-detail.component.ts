@@ -66,11 +66,10 @@ export class ItemDetailComponent implements OnInit {
     this.item.item_intervaloAtualizacaoUn = this.selectedUnFreq;
     this.item.item_tempoArmazenamentoDadosUn = this.selectedUnData;
     if(this.isNew){
-      this.itemService.createItem(this.item)
+      this.itemService.createItem(this.item).subscribe(() => this.ref.close());
     }else{
-      this.itemService.editItem(this.item)
+      this.itemService.editItem(this.item).subscribe(() => this.ref.close());
     }
-    this.ref.close();
   }
 
 }

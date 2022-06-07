@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Template } from '../models/template';
 
@@ -9,6 +9,10 @@ import { Template } from '../models/template';
 export class TemplateService {
 
   url = 'http://localhost:8000/template/';
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -24,11 +28,11 @@ export class TemplateService {
 
   createTemplate(template: Template): Observable<any>{
     
-    return this.http.post<any>(this.url, JSON.stringify(template));
+    return this.http.post<any>(this.url + '/', JSON.stringify(template), this.httpOptions);
   }
 
   editTemplate(template: Template): Observable<any>{
     
-    return this.http.put<any>(this.url + template.id + '/', JSON.stringify(template));
+    return this.http.put<any>(this.url + template.id + '/', JSON.stringify(template), this.httpOptions);
   }
 }

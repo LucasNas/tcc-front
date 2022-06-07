@@ -63,27 +63,29 @@ export class HomeTabComponent implements OnInit {
   }
 
   newHost(): void{
-    this.dialogService.open(HostDetailComponent,{
+    const ref = this.dialogService.open(HostDetailComponent,{
       header: "Novo Host",
       width: '55%',
       data: {template:this.templates}
     });
-    
+    ref.onClose.subscribe(() => this.getHosts());
   }
 
   newTemplate(): void{
-    this.dialogService.open(TemplateDetailComponent,{
+    const ref = this.dialogService.open(TemplateDetailComponent,{
       header: "Novo Template",
       width: '55%',
       data: {itens:this.itens}
     });
+    ref.onClose.subscribe(() => this.getTemplates());
   }
 
 
   newItem(): void{
-    this.dialogService.open(ItemDetailComponent,{
+    const ref = this.dialogService.open(ItemDetailComponent,{
       header: "Novo Item",
       width: '70%'
-    }); 
+    });
+    ref.onClose.subscribe(() => this.getItens());
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from '../models/item';
@@ -9,6 +9,10 @@ import { Item } from '../models/item';
 export class ItemService {
 
   url = 'http://localhost:8000/item/';
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -24,11 +28,11 @@ export class ItemService {
 
   createItem(item: Item): Observable<any>{
     
-    return this.http.post<any>(this.url, JSON.stringify(item));
+    return this.http.post<any>(this.url + '/', JSON.stringify(item), this.httpOptions);
   }
 
   editItem(item: Item): Observable<any>{
     
-    return this.http.put<any>(this.url + item.id + '/', JSON.stringify(item));
+    return this.http.put<any>(this.url + item.id + '/', JSON.stringify(item), this.httpOptions);
   }
 }

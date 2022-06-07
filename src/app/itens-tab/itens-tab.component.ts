@@ -29,19 +29,20 @@ export class ItensTabComponent implements OnInit {
   }
 
   newItem(): void{
-    this.dialogService.open(ItemDetailComponent,{
+    const ref = this.dialogService.open(ItemDetailComponent,{
       header: "Novo Item",
       width: '75%'
     });
-    
+    ref.onClose.subscribe(() => this.getItens());
   }
 
   editItem(item: Item): void{
-    this.dialogService.open(ItemDetailComponent,{
+    const ref = this.dialogService.open(ItemDetailComponent,{
       header: "Editar " + item.item_nome,
       width: '75%',
       data: {item:item}
     });
+    ref.onClose.subscribe(() => this.getItens());
   }
  
    deleteItem(item: Item): void{
