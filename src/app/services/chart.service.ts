@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ChartService {
   
-  url = 'http://localhost:8000/data/';
+  url = 'http://192.168.0.18:8000/data/';
 
   constructor(private http: HttpClient) { }
 

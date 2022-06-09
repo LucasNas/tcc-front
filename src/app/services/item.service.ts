@@ -8,7 +8,7 @@ import { Item } from '../models/item';
 })
 export class ItemService {
 
-  url = 'http://localhost:8000/item/';
+  url = 'http://192.168.0.18:8000/item/';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -28,7 +28,7 @@ export class ItemService {
 
   createItem(item: Item): Observable<any>{
     
-    return this.http.post<any>(this.url + '/', JSON.stringify(item), this.httpOptions);
+    return this.http.post<any>(this.url, JSON.stringify(item), this.httpOptions);
   }
 
   editItem(item: Item): Observable<any>{

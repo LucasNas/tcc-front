@@ -8,7 +8,7 @@ import { Template } from '../models/template';
 })
 export class TemplateService {
 
-  url = 'http://localhost:8000/template/';
+  url = 'http://192.168.0.18:8000/template/';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -28,7 +28,7 @@ export class TemplateService {
 
   createTemplate(template: Template): Observable<any>{
     
-    return this.http.post<any>(this.url + '/', JSON.stringify(template), this.httpOptions);
+    return this.http.post<any>(this.url, JSON.stringify(template), this.httpOptions);
   }
 
   editTemplate(template: Template): Observable<any>{

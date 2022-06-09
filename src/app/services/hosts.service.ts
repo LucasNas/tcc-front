@@ -8,7 +8,7 @@ import { Host } from '../models/host';
 })
 export class HostsService {
 
-  url = "http://localhost:8000/host/";
+  url = "http://192.168.0.18:8000/host/";
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

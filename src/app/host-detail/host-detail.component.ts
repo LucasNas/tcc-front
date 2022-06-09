@@ -41,31 +41,43 @@ export class HostDetailComponent implements OnInit {
             var templateHost = {id: config.data.template[i].id, name: config.data.template[i].template_nome};
             auxTemplateHost.push(templateHost);
           }
+          console.log(auxTemplateHost);
           this.templatesHost = auxTemplateHost;
           this.host.host_observacoes="";
+          console.log(this.templatesHost);
       }
       if(this.config.data.host){
         this.host = this.config.data.host;
         this.selectedAtivo = this.config.data.host.host_status;
         this.isNew = false
         for (let i = 0; i < config.data.host.host_template.length; i++) {
-          for (let j = 0; j <this.templatesHost.length; j++){
-              if(this.templatesHost[i].id === config.data.host.host_template[j]){
-                this.selectedTemplates.push(this.templatesHost[i]);
+          for (let j = 0; j < this.templatesHost.length; j++){
+              if(this.templatesHost[j].id === config.data.host.host_template[i]){
+                this.selectedTemplates.push(this.templatesHost[j]);
               }
           }
         }
       }
+      else{
+        this.host.host_porta = 161;
+        this.host.host_community = 'public';
+        this.selectedAtivo = true;
+      }
     }
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {   
   }
 
   saveHost(): void {
+    let idTemplatesSelectedTemplates: any = [];
+    
+    for (let i = 0; i < this.selectedTemplates.length; i++) {
+      idTemplatesSelectedTemplates[i] = this.selectedTemplates[i].id;
+    }
+
     this.host.host_status = this.selectedAtivo;
-    this.host.host_template = this.selectedTemplates;
+    this.host.host_template = idTemplatesSelectedTemplates;
     console.log(this.host.host_observacoes);
     if(this.isNew){
       this.hostService.createHost(this.host).subscribe(() => this.ref.close());

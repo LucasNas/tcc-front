@@ -30,18 +30,21 @@ export class TemplateDetailComponent implements OnInit {
           var itemTemplate = {id: config.data.itens[i].id, name: config.data.itens[i].item_nome};
           auxItemTemplate.push(itemTemplate);
         }
+        console.log(auxItemTemplate);
         this.itemTemplate = auxItemTemplate;
+        console.log(this.itemTemplate);
       }
       if(this.config.data.template){
         this.template = this.config.data.template;
         this.isNew = false
         for (let i = 0; i < this.template.template_item.length; i++) {
           for (let j = 0; j <this.itemTemplate.length; j++){
-              if(this.itemTemplate[i].id === this.template.template_item[j]){
-                this.selectedItens.push(this.itemTemplate[i]);
+              if(this.itemTemplate[j].id === this.template.template_item[i]){
+                this.selectedItens.push(this.itemTemplate[j]);
               }
           }
         }
+        console.log(this.selectedItens);
       }
     }
   }
@@ -50,6 +53,13 @@ export class TemplateDetailComponent implements OnInit {
   }
 
   saveTemplate(): void {
+    let idItensSelectedItens: any = [];
+    
+    for (let i = 0; i < this.selectedItens.length; i++) {
+      idItensSelectedItens[i] = this.selectedItens[i].id;
+    }
+
+    this.template.template_item = idItensSelectedItens;
     if(this.isNew){
       this.templateService.createTemplate(this.template).subscribe(() => this.ref.close());
     }else{

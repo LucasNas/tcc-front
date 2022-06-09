@@ -47,6 +47,7 @@ export class ItemDetailComponent implements OnInit {
         {name: 'months', nome: 'Meses'},
         {name: 'years', nome: 'Anos'}
       ]
+
       if(this.config.data){
         if(this.config.data.item){
           this.item = this.config.data.item;
@@ -56,12 +57,18 @@ export class ItemDetailComponent implements OnInit {
           this.selectedUnData = this.item.item_tempoArmazenamentoDadosUn;
         }
       }
+      else{
+        this.item.item_intervaloAtualizacao = 2;
+        this.selectedUnFreq = "minutes";
+        this.item.item_tempoArmazenamentoDados = 90;
+        this.selectedUnData = 'days';
+      }
   }
 
   ngOnInit(): void {
   }
 
-  saveHost(): void {
+  saveItem(): void {
     this.item.item_tipoInformacao =  this.selectedUnOID;
     this.item.item_intervaloAtualizacaoUn = this.selectedUnFreq;
     this.item.item_tempoArmazenamentoDadosUn = this.selectedUnData;
