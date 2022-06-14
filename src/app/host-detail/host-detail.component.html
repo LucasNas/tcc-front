@@ -10,7 +10,8 @@
         </div>
         <div class="field col-12 md:col-3 sm:col-3 lg:col-3">
             <label for="porta">Porta</label>
-            <p-inputNumber [step]="1"  [(ngModel)]="host.host_porta" inputId="porta" ></p-inputNumber>
+            <!-- <p-inputNumber [step]="1"  [(ngModel)]="host.host_porta" inputId="porta" ></p-inputNumber> -->
+            <input [(ngModel)]="host.host_porta" id="porta" type="numeric" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
         <div class="field col-12 md:col-3 sm:col-3 lg:col-3">
             <label for="community">Community</label>

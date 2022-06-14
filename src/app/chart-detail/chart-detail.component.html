@@ -4,6 +4,7 @@
 </div>
 --> 
 
+
 <p-accordion *ngFor="let data of datas"  [multiple]="true">
     <p-accordionTab header="{{data.header}}"  *ngIf="data.tipo === 'NI' || data.tipo === 'ND'" [selected]="true">
         <p-chart type="line" [data]="data"></p-chart>
@@ -16,6 +17,15 @@
             <div class="text-green-500 text-center field col-12" *ngIf="data.error === false">
                 {{data.datasets}}
            </div>
+            <div class="text-right field col-12">Última atualização: {{data.labels}}</div>     
+        </p-accordionTab>  
+    </div>
+    <!-- Item do tipo LOG -->
+    <div *ngIf="data.tipo === 'LG'">
+        <p-accordionTab  header="{{data.header}}" [selected]="true" style="text-align: center">
+            <textarea rows="10" cols="90" pInputTextarea disabled>
+                {{data.datasets}} 
+            </textarea>
             <div class="text-right field col-12">Última atualização: {{data.labels}}</div>     
         </p-accordionTab>  
     </div>

@@ -38,13 +38,15 @@ export class ChartDetailComponent implements OnInit {
       if(data.itens[i].item_tipoInformacao == 'CH'){
         this.createInfo(data.itens[i]);
       }
+      if(data.itens[i].item_tipoInformacao == 'LG'){
+        this.createInfoLog(data.itens[i]);
+      }
     }
    
   }
 
   createChart(chart: any): void{
     let hasError= false;
-
     if(chart.expression != null){
       for(let i = 0; i<chart.data.length; i++){
         try {
@@ -57,6 +59,14 @@ export class ChartDetailComponent implements OnInit {
         }
       }  
     }
+
+    //Formata data e hora
+    for(let i = 0; i<chart.labels.length; i++){
+      chart.labels[i] = String(chart.labels[i]).substring(8,10) + '/' + String(chart.labels[i]).substring(5,7) + '/' 
+      + String(chart.labels[i]).substring(0,4) + ' ' + String(chart.labels[i]).substring(11,13) + ':'
+      + String(chart.labels[i]).substring(14,16) + ':' + String(chart.labels[i]).substring(17,19);
+    }
+
     this.datas.push({
       labels: chart.labels,
       datasets: [
@@ -94,6 +104,71 @@ export class ChartDetailComponent implements OnInit {
     if(infoData === 'No SNMP response received before timeout'){
       hasError = true;
     }
+
+    //Formata data e hora
+    for(let i = 0; i<info.labels.length; i++){
+      info.labels[i] = String(info.labels[i]).substring(8,10) + '/' + String(info.labels[i]).substring(5,7) + '/' 
+      + String(info.labels[i]).substring(0,4) + ' ' + String(info.labels[i]).substring(11,13) + ':'
+      + String(info.labels[i]).substring(14,16) + ':' + String(info.labels[i]).substring(17,19);
+    }
+
+    infoUpdate = info.labels[info.labels.length - 1];
+      this.datas.push({
+        labels:infoUpdate,
+        datasets:infoData,
+        tipo: info.item_tipoInformacao,
+        error: hasError,
+        header: info.item_nome
+      })
+  }
+
+  //Cria log
+  createInfoLog(info: any): void{
+    let hasError= false;
+    let infoData = "";
+    let infoUpdate;
+    if(info.expression != null){
+      try {
+        let strExpression = String(info.expression);
+        for(let i = info.data.length - 1; i>=0; i--) {
+          if (info.data[i] === 'No SNMP response received before timeout') {
+            infoData +=  String(info.labels[i]).substring(8,10) + '/' + String(info.labels[i]).substring(5,7) + '/' 
+            + String(info.labels[i]).substring(0,4) + ' ' + String(info.labels[i]).substring(11,13) + ':'
+            + String(info.labels[i]).substring(14,16) + ':' + String(info.labels[i]).substring(17,19) + ' : ' 
+            + 'No SNMP response received before timeout' + "\n";
+          }
+          else {
+            infoData += String(info.labels[i]).substring(8,10) + '/' + String(info.labels[i]).substring(5,7) + '/' 
+            + String(info.labels[i]).substring(0,4) + ' ' + String(info.labels[i]).substring(11,13) + ':'
+            + String(info.labels[i]).substring(14,16) + ':' + String(info.labels[i]).substring(17,19) + ' : ' 
+            + String(eval(strExpression.replace('{OID}', info.data[i]))) + "\n";
+          }
+        }
+      }
+      catch(e) {
+        console.log(e);
+      }
+    }
+    else {
+      try {
+        for(let i = info.data.length - 1; i>=0; i--) {
+          infoData += String(info.labels[i]).substring(8,10) + '/' + String(info.labels[i]).substring(5,7) + '/' 
+          + String(info.labels[i]).substring(0,4) + ' ' + String(info.labels[i]).substring(11,13) + ':'
+          + String(info.labels[i]).substring(14,16) + ':' + String(info.labels[i]).substring(17,19) + ' : ' + String(info.data[i]) + "\n";
+        }
+      }
+      catch(e) {
+        console.log(e);
+      }
+    }
+
+    //Formata data e hora
+    for(let i = 0; i<info.labels.length; i++){
+      info.labels[i] = String(info.labels[i]).substring(8,10) + '/' + String(info.labels[i]).substring(5,7) + '/' 
+      + String(info.labels[i]).substring(0,4) + ' ' + String(info.labels[i]).substring(11,13) + ':'
+      + String(info.labels[i]).substring(14,16) + ':' + String(info.labels[i]).substring(17,19);
+    }
+
     infoUpdate = info.labels[info.labels.length - 1];
       this.datas.push({
         labels:infoUpdate,

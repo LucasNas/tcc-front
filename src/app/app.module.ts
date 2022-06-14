@@ -28,6 +28,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { TemplateDetailComponent } from './template-detail/template-detail.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ChartModule,
     AccordionModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    InputTextareaModule,
   ],
   providers: [ConfirmationService,DialogService],
   bootstrap: [AppComponent]
